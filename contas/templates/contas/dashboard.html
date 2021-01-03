@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}Dashboard de {{ user }} | {% endblock %}
+{% block conteudo %}
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}"> -->
+<h1 class="mt-3 mb-3">Dashboard</h1>
+<h2>Olá {{ user.first_name }} {{ user.last_name }}</h2>
+<h3>Utilizador: {{ user.username }}</h3>
+<br>
+<h4>Inserir contacto na base de dados:</h4>
+<!-- Navegador de Bootstrap que inseri para tentar introduzir mais funcionalidades ao utilizador
+<ul class="nav nav-pills">
+  <li class="nav-item">
+    <a class="nav-link tags active" id="dash" href="">Dashboard</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link tags" id="ins" href="#">Inserir contacto</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link tags" id="ofs" href="#">Apagar contacto</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link tags" id="logout" href="{% url 'logout' %}">logout</a>
+  </li>
+</ul>
+-->
+<br><br>
+<div class="container">
+    <form method="POST" enctype="multipart/form-data" action="{% url 'dashboard' %}">
+        {% csrf_token %}
+        <table class="table">
+            {{ form }}
+        </table>
+        <button class="mt-3 mb-3 mr-3 btn btn-primary" type="submit">Inserir</button>
+    </form>
+</div>
+<!-- <script type="text/javascript" src="{% static 'javascript.js' %}"></script> -->
+{% endblock %}
